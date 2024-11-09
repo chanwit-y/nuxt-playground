@@ -1,6 +1,9 @@
+<script setup lang="ts">
+import Flow from './components/Flow.vue'
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <ClientOnly fallback-tag="span" fallback="Loading comments...">
+    <Flow />
+  </ClientOnly>
 </template>
