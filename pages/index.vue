@@ -10,8 +10,8 @@ function toggleDark() {
 </script>
 
 <template>
-  <div grid h-full class="grid-cols-[1fr_2fr]">
-    <div border-r border-base p4>
+  <div grid="~ cols-[1fr_2fr]" h-full >
+    <div border="r base" p4>
       Content
 
       <div text-red>
