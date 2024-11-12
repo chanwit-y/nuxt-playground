@@ -1,12 +1,17 @@
 <script setup lang="ts">
+// import Flow from '~/components/Flow.vue'
 
 const { x, y } = useMouse();
-const c = useColorMode()
+const color = useColorMode()
+
+const toggleDark = () => {
+	color.value = color.value === 'dark' ? 'light' : 'dark'
+}
 
 </script>
 <template>
-	<div>
-		<h1>Home</h1>
-		<span>Mouse position: {{ x }}, {{ y }}</span>
+	<div text-red>
+		<p>Mouse position: {{ x }}, {{ y }}</p>
+		<button @click="toggleDark">{{ color.value }}</button>
 	</div>
 </template>
