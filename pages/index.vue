@@ -10,9 +10,9 @@ function toggleDark() {
 </script>
 
 <template>
-  <div grid grid-cols-2 h-full>
-    <div border-r border-base>
-      Col 1
+  <div grid h-full class="grid-cols-[1fr_2fr]">
+    <div border-r border-base p4>
+      Content
 
       <div text-red>
         <p>Mouse position: {{ x }}, {{ y }}</p>
@@ -21,6 +21,8 @@ function toggleDark() {
         </button>
       </div>
     </div>
-    <div>Col 2</div>
+    <div p4>
+      Playground
+    </div>
   </div>
 </template>

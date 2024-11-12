@@ -7,7 +7,7 @@ import {
 
 export default defineConfig({
   shortcuts: {
-    'border-base': 'border-gray-600 dark:border-gray-300'
+    'border-base': 'border-gray-300 dark:border-gray-600'
   },
   presets: [presetUno(), presetIcons(), presetAttributify()],
 });
