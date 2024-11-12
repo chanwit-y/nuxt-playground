@@ -10,10 +10,17 @@ function toggleDark() {
 </script>
 
 <template>
-  <div text-red>
-    <p>Mouse position: {{ x }}, {{ y }}</p>
-    <button @click="toggleDark">
-      {{ color.value }}
-    </button>
+  <div grid grid-cols-2 h-full>
+    <div border-r border-base>
+      Col 1
+
+      <div text-red>
+        <p>Mouse position: {{ x }}, {{ y }}</p>
+        <button @click="toggleDark">
+          {{ color.value }}
+        </button>
+      </div>
+    </div>
+    <div>Col 2</div>
   </div>
 </template>
