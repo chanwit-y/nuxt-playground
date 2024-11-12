@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { MarkerType, VueFlow, useVueFlow } from '@vue-flow/core'
 import { Background } from '@vue-flow/background'
 import { ControlButton, Controls } from '@vue-flow/controls'
+import { MarkerType, useVueFlow, VueFlow } from '@vue-flow/core'
 import { MiniMap } from '@vue-flow/minimap'
+import { ref } from 'vue'
 import Icon from './Icon.vue'
-
 
 //  const initialNodes = [
 //   {
@@ -75,8 +74,6 @@ import Icon from './Icon.vue'
 //   },
 // ]
 
-
-
 /**
  * `useVueFlow` provides:
  * 1. a set of methods to interact with the VueFlow instance (like `fitView`, `setViewport`, `addEdges`, etc)
@@ -86,71 +83,71 @@ import Icon from './Icon.vue'
 const { onInit, onNodeDragStop, onConnect, addEdges, setViewport, toObject } = useVueFlow()
 
 const nodes = ref([
-	{
-		id: '1',
-		type: 'input',
-		data: { label: 'Node 1' },
-		position: { x: 250, y: 0 },
-		class: 'light',
-	},
-	{
-		id: '2',
-		type: 'output',
-		data: { label: 'Node 2' },
-		position: { x: 100, y: 100 },
-		class: 'light',
-	},
-	{
-		id: '3',
-		data: { label: 'Node 3' },
-		position: { x: 400, y: 100 },
-		class: 'light',
-	},
-	{
-		id: '4',
-		data: { label: 'Node 4' },
-		position: { x: 150, y: 200 },
-		class: 'light',
-	},
-	{
-		id: '5',
-		type: 'output',
-		data: { label: 'Node 5' },
-		position: { x: 300, y: 300 },
-		class: 'light',
-	},
+  {
+    id: '1',
+    type: 'input',
+    data: { label: 'Node 1' },
+    position: { x: 250, y: 0 },
+    class: 'light',
+  },
+  {
+    id: '2',
+    type: 'output',
+    data: { label: 'Node 2' },
+    position: { x: 100, y: 100 },
+    class: 'light',
+  },
+  {
+    id: '3',
+    data: { label: 'Node 3' },
+    position: { x: 400, y: 100 },
+    class: 'light',
+  },
+  {
+    id: '4',
+    data: { label: 'Node 4' },
+    position: { x: 150, y: 200 },
+    class: 'light',
+  },
+  {
+    id: '5',
+    type: 'output',
+    data: { label: 'Node 5' },
+    position: { x: 300, y: 300 },
+    class: 'light',
+  },
 ])
 
 const edges = ref([
-	{
-		id: 'e1-2',
-		source: '1',
-		target: '2',
-		animated: true,
-	},
-	{
-		id: 'e1-3',
-		source: '1',
-		target: '3',
-		label: 'edge with arrowhead',
-		markerEnd: MarkerType.ArrowClosed,
-	},
-	{
-		id: 'e4-5',
-		type: 'step',
-		source: '4',
-		target: '5',
-		label: 'Node 2',
-		style: { stroke: 'orange' },
-		labelBgStyle: { fill: 'orange' },
-	},
-	{
-		id: 'e3-4',
-		type: 'smoothstep',
-		source: '3',
-		target: '4',
-		label: 'smoothstep-edge',
-	},
+  {
+    id: 'e1-2',
+    source: '1',
+    target: '2',
+    animated: true,
+  },
+  {
+    id: 'e1-3',
+    source: '1',
+    target: '3',
+    label: 'edge with arrowhead',
+    markerEnd: MarkerType.ArrowClosed,
+  },
+  {
+    id: 'e4-5',
+    type: 'step',
+    source: '4',
+    target: '5',
+    label: 'Node 2',
+    style: { stroke: 'orange' },
+    labelBgStyle: { fill: 'orange' },
+  },
+  {
+    id: 'e3-4',
+    type: 'smoothstep',
+    source: '3',
+    target: '4',
+    label: 'smoothstep-edge',
+  },
 ])
 
 // our dark mode toggle flag
@@ -163,9 +160,9 @@ const dark = ref(false)
  * onInit is called when the VueFlow viewport is initialized
  */
 onInit((vueFlowInstance) => {
-	// instance is the same as the return of `useVueFlow`
-	vueFlowInstance.fitView()
-	console.log('Vue Flow ')
+  // instance is the same as the return of `useVueFlow`
+  vueFlowInstance.fitView()
+  console.log('Vue Flow ')
 })
 
 /**
@@ -178,7 +175,7 @@ onInit((vueFlowInstance) => {
  * 4. any intersections with other nodes
  */
 onNodeDragStop(({ event, nodes, node }) => {
-	console.log('Node Drag Stop', { event, nodes, node })
+  console.log('Node Drag Stop', { event, nodes, node })
 })
 
 /**
@@ -187,7 +184,7 @@ onNodeDragStop(({ event, nodes, node }) => {
  * You can add additional properties to your new edge (like a type or label) or block the creation altogether by not calling `addEdges`
  */
 onConnect((connection) => {
-	addEdges(connection)
+  addEdges(connection)
 })
 
 /**
@@ -197,70 +194,71 @@ onConnect((connection) => {
  * 3. Create a new array of nodes and pass it to the `nodes` ref
  */
 function updatePos() {
-	nodes.value = nodes.value.map((node) => {
-		return {
-			...node,
-			position: {
-				x: Math.random() * 400,
-				y: Math.random() * 400,
-			},
-		}
-	})
+  nodes.value = nodes.value.map((node) => {
+    return {
+      ...node,
+      position: {
+        x: Math.random() * 400,
+        y: Math.random() * 400,
+      },
+    }
+  })
 }
 
 /**
  * toObject transforms your current graph data to an easily persist-able object
  */
 function logToObject() {
-	console.log(toObject())
+  console.log(toObject())
 }
 
 /**
  * Resets the current viewport transformation (zoom & pan)
  */
 function resetTransform() {
-	setViewport({ x: 0, y: 0, zoom: 1 })
+  setViewport({ x: 0, y: 0, zoom: 1 })
 }
 
 function toggleDarkMode() {
-	dark.value = !dark.value
+  dark.value = !dark.value
 }
-
 </script>
 
 <template>
+  <ClientOnly fallback-tag="span" fallback="Loading comments...">
+    <h3>Test Flow</h3>
+    <div class="box">
+      <VueFlow
+        :nodes="nodes" :edges="edges" :class="{ dark }" class="basic-flow"
+        :default-viewport="{ zoom: 1.5 }" :min-zoom="0.2" :max-zoom="4"
+      >
+        <Background pattern-color="#aaa" :gap="16" />
 
-	<ClientOnly fallback-tag="span" fallback="Loading comments...">
-		<h3>Test Flow</h3>
-		<div class="box">
-			<VueFlow :nodes="nodes" :edges="edges" :class="{ dark }" class="basic-flow"
-				:default-viewport="{ zoom: 1.5 }" :min-zoom="0.2" :max-zoom="4">
-				<Background pattern-color="#aaa" :gap="16" />
+        <MiniMap />
 
-				<MiniMap />
+        <Controls position="top-left">
+          <ControlButton title="Reset Transform" @click="resetTransform">
+            <Icon name="reset" />
+          </ControlButton>
 
-				<Controls position="top-left">
-					<ControlButton title="Reset Transform" @click="resetTransform">
-						<Icon name="reset" />
-					</ControlButton>
+          <ControlButton title="Shuffle Node Positions" @click="updatePos">
+            <Icon name="update" />
+          </ControlButton>
 
-					<ControlButton title="Shuffle Node Positions" @click="updatePos">
-						<Icon name="update" />
-					</ControlButton>
+          <ControlButton title="Toggle Dark Mode" @click="toggleDarkMode">
+            <Icon v-if="dark" name="sun" />
+            <Icon v-else name="moon" />
+          </ControlButton>
 
-					<ControlButton title="Toggle Dark Mode" @click="toggleDarkMode">
-						<Icon v-if="dark" name="sun" />
-						<Icon v-else name="moon" />
-					</ControlButton>
-
-					<ControlButton title="Log `toObject`" @click="logToObject">
-						<Icon name="log" />
-					</ControlButton>
-				</Controls>
-			</VueFlow>
-		</div>
-	</ClientOnly>
+          <ControlButton title="Log `toObject`" @click="logToObject">
+            <Icon name="log" />
+          </ControlButton>
+        </Controls>
+      </VueFlow>
+    </div>
+  </ClientOnly>
 </template>
+
 <style>
 @import 'https://cdn.jsdelivr.net/npm/@vue-flow/core@1.41.4/dist/style.css';
 @import 'https://cdn.jsdelivr.net/npm/@vue-flow/core@1.41.4/dist/theme-default.css';

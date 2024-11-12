@@ -1,5 +1,5 @@
-import antfu from 'eslint-config-antfu'
+import antfu from '@antfu/eslint-config'
 
 export default antfu({
-	
+
 })
