@@ -229,34 +229,37 @@ function toggleDarkMode() {
 </script>
 
 <template>
-	<h3>Test Flow</h3>
-	<div class="box">
-		<VueFlow :nodes="nodes" :edges="edges" :class="{ dark }" class="basic-flow"
-			:default-viewport="{ zoom: 1.5 }" :min-zoom="0.2" :max-zoom="4">
-			<Background pattern-color="#aaa" :gap="16" />
 
-			<MiniMap />
+	<ClientOnly fallback-tag="span" fallback="Loading comments...">
+		<h3>Test Flow</h3>
+		<div class="box">
+			<VueFlow :nodes="nodes" :edges="edges" :class="{ dark }" class="basic-flow"
+				:default-viewport="{ zoom: 1.5 }" :min-zoom="0.2" :max-zoom="4">
+				<Background pattern-color="#aaa" :gap="16" />
 
-			<Controls position="top-left">
-				<ControlButton title="Reset Transform" @click="resetTransform">
-					<Icon name="reset" />
-				</ControlButton>
+				<MiniMap />
 
-				<ControlButton title="Shuffle Node Positions" @click="updatePos">
-					<Icon name="update" />
-				</ControlButton>
+				<Controls position="top-left">
+					<ControlButton title="Reset Transform" @click="resetTransform">
+						<Icon name="reset" />
+					</ControlButton>
 
-				<ControlButton title="Toggle Dark Mode" @click="toggleDarkMode">
-					<Icon v-if="dark" name="sun" />
-					<Icon v-else name="moon" />
-				</ControlButton>
+					<ControlButton title="Shuffle Node Positions" @click="updatePos">
+						<Icon name="update" />
+					</ControlButton>
 
-				<ControlButton title="Log `toObject`" @click="logToObject">
-					<Icon name="log" />
-				</ControlButton>
-			</Controls>
-		</VueFlow>
-	</div>
+					<ControlButton title="Toggle Dark Mode" @click="toggleDarkMode">
+						<Icon v-if="dark" name="sun" />
+						<Icon v-else name="moon" />
+					</ControlButton>
+
+					<ControlButton title="Log `toObject`" @click="logToObject">
+						<Icon name="log" />
+					</ControlButton>
+				</Controls>
+			</VueFlow>
+		</div>
+	</ClientOnly>
 </template>
 <style>
 @import 'https://cdn.jsdelivr.net/npm/@vue-flow/core@1.41.4/dist/style.css';
@@ -284,6 +287,7 @@ body,
 .box {
 	height: 100vh;
 }
+
 .vue-flow__minimap {
 	transform: scale(75%);
 	transform-origin: bottom right;

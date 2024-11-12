@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import Flow from './components/Flow.vue'
 </script>
 
 <template>
-  <ClientOnly fallback-tag="span" fallback="Loading comments...">
-    <Flow />
-  </ClientOnly>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
+
+<style>
+.dark {
+  color-scheme: dark;
+}
+</style>
